@@ -1,0 +1,98 @@
+body{
+    padding: 0;
+    margin: 0;
+}
+
+img#content{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -10;
+    height: 100%;
+    width: 100%;
+    
+}
+
+#topbar {
+    width: 100%;
+    height: 9vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    background-color: black;
+}
+
+#topbar > img {
+    height: 9vh;
+    margin-left: 10px;
+}
+
+div#formContainer {
+    height: 270px;
+    width: 500px;
+    border-radius: 8px;
+    margin: 16% auto;
+    padding: 10px;
+    background-color: white;
+    opacity: .98;
+}
+
+h1#loginHeader {
+    margin: auto;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    border-style: double none double none;
+    border: 10px 0 10px 0;
+    padding: 10px 0;
+    margin-top: 10px;
+    border-color: black;
+}
+
+input[type=text] {
+    width: 100%;
+    padding: 8px 5px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 15px;
+    box-sizing: border-box;
+}
+
+input[type=password] {
+    width: 100%;
+    padding: 8px 5px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 15px;
+    box-sizing: border-box;
+}
+
+#loginButton {
+    margin-top: 15px;
+}
+
+#loginForm {
+    margin-top: 30px;
+}
+
+.button {
+    background-color: #F1B82D;
+    border: none;
+    color: white;
+    padding: 10px 32px;
+    text-align: center;
+    width: 100%;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 20px;
+}
+
+.button:hover {
+    background-color: #4CAF50;
+}
