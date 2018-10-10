@@ -29,7 +29,7 @@ img#content{
 }
 
 div#formContainer {
-    height: 270px;
+    height: 290px;
     width: 500px;
     border-radius: 8px;
     margin: 16% auto;
@@ -63,7 +63,7 @@ input[type=text] {
 input[type=password] {
     width: 100%;
     padding: 8px 5px;
-    margin: 8px 0;
+    margin: 15px 0 10px 0;
     display: inline-block;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -72,7 +72,7 @@ input[type=password] {
 }
 
 #loginButton {
-    margin-top: 15px;
+    margin-top: 20px;
 }
 
 #loginForm {
@@ -83,16 +83,52 @@ input[type=password] {
     background-color: #F1B82D;
     border: none;
     color: white;
-    padding: 10px 32px;
+    padding: 5px 32px;
     text-align: center;
     width: 100%;
     text-decoration: none;
     display: inline-block;
     font-size: 20px;
     cursor: pointer;
-    border-radius: 20px;
 }
 
 .button:hover {
     background-color: #4CAF50;
+}
+
+input.parsley-success,
+select.parsley-success,
+textarea.parsley-success {
+  color: #468847;
+  background-color: #DFF0D8;
+  border: 1px solid #D6E9C6;
+}
+
+input.parsley-error,
+select.parsley-error,
+textarea.parsley-error {
+  color: #B94A48;
+  background-color: #F2DEDE;
+  border: 1px solid #EED3D7;
+}
+
+.parsley-errors-list {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    position: absolute;
+    z-index: 10;
+    font-size: 0.9em;
+    line-height: 0.9em;
+    opacity: 0;
+    color: mediumvioletred;
+
+  transition: all .3s ease-in;
+  -o-transition: all .3s ease-in;
+  -moz-transition: all .3s ease-in;
+  -webkit-transition: all .3s ease-in;
+}
+
+.parsley-errors-list.filled {
+  opacity: 1;
 }

@@ -6,6 +6,8 @@
         <title>CS3380 Project | Login</title>
         <meta charset="utf-8">
         <link rel="stylesheet" type="text/css" href="project.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.8.1/parsley.min.js"></script> 
     </head>
 
     <body>
@@ -19,11 +21,11 @@
 
             <h1 id="loginHeader">CS3380 Project Login</h1>
 
-            <form id="loginForm" action="#">
+            <form id="loginForm" action="login.php" method="post" data-parsley-validate>
 
-                <input type="text" id="username" name="user" placeholder="Username">
+                <input type="text" id="username" name="user" placeholder="Username" data-parsley-required 	data-parsley-length="[6, 30]">
                 <br>
-                <input type="password" id="password" name="password" placeholder="Password">
+                <input type="password" id="password" name="password" placeholder="Password" data-parsley-required data-parsley-length="[6, 30]" >
 
                 <button id="loginButton" type="submit" form="loginForm" class="button" value="Submit">Sign In</button>
             </form>
