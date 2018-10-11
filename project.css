@@ -3,7 +3,7 @@ body{
     margin: 0;
 }
 
-img#content{
+img#contentBackground{
     position: absolute;
     top: 0;
     left: 0;
@@ -38,7 +38,7 @@ div#formContainer {
     opacity: .98;
 }
 
-h1#loginHeader {
+h1.boxHeader {
     margin: auto;
     text-align: center;
     font-family: Arial, sans-serif;
@@ -71,7 +71,7 @@ input[type=password] {
     box-sizing: border-box;
 }
 
-#loginButton {
+button#loginButton {
     margin-top: 20px;
 }
 
@@ -131,4 +131,18 @@ textarea.parsley-error {
 
 .parsley-errors-list.filled {
   opacity: 1;
+}
+
+div#newUserBox {
+    height: 350px;
+    width: 500px;
+    border-radius: 8px;
+    margin: 16% auto;
+    padding: 10px;
+    background-color: white;
+    opacity: .98;
+}
+
+button#newUserButton {
+    margin-top: 20px;
 }
