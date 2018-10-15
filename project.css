@@ -120,7 +120,7 @@ textarea.parsley-error {
     padding: 0;
     margin: 0;
     list-style-type: none;
-    position: absolute;
+    position: relative;
     z-index: 10;
     font-size: 0.9em;
     line-height: 0.9em;
