@@ -228,3 +228,22 @@ form#createUserForm > div.side-by-side > input[type=date] {
 form#createUserForm > div#ssnBox {
     margin-top: 10px;
 }
+
+div#userListBox {
+    height: 425px;
+    width: 500px;
+    border-radius: 8px;
+    margin: 13% auto 0 auto;
+    padding: 10px;
+    background-color: white;
+    opacity: .98;
+}
+
+div#userListBox tr.highlight { 
+    background-color: red; 
+}
+
+div#userListBox table#data {
+    border-collapse: collapse;
+    text-align: center;
+}
