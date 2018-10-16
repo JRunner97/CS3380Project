@@ -19,20 +19,47 @@
     $dbPassword = "cs12345";
 
     try {
+
         $conn = new PDO("mysql:host=$servername;dbname=CS3380", $dbUsername, $dbPassword);
-        // set the PDO error mode to exception
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $sql = "UPDATE users SET username='$username', password='$password', email='$email', first_name='$first_name', last_name='$last_name', date_of_birth='$date_of_birth', ssn='$ssn' WHERE id='$id'";
-
-        // Prepare statement
-        $stmt = $conn->prepare($sql);
-
-        // execute the query
+        $stmt = $conn->prepare("SELECT username FROM users WHERE username = '$username'");
         $stmt->execute();
 
-        // echo a message to say the UPDATE succeeded
-        echo $stmt->rowCount() . " records UPDATED successfully";
+        // checks if a query returned a tuple from db
+        // if it did then the username is taken
+        if($stmt->rowCount() == 0){
+           
+            $createdTimestamp = date('Y-m-d G:i:s');
+
+            $sql = "UPDATE users SET username='$username', password='$password', email='$email', first_name='$first_name', last_name='$last_name', date_of_birth='$date_of_birth', ssn='$ssn' WHERE id='$id'";
+
+            // Prepare statement
+            $stmt = $conn->prepare($sql);
+
+            // execute the query
+            $stmt->execute();
+            
+            // TODO add flash messages
+            // redirects user back to userList.php page if successful
+            header("Location: /CS3380Project/User/userList.php");
+            
+            // makes it so that the rest of the code isn't executed
+            exit();
+           
+        }
+        else {
+            
+            // TODO add flash messages
+            
+            // redirects user back to userList.php page if username already taken
+            header("Location: /CS3380Project/User/userList.php");
+            
+            // makes it so that the rest of the code isn't executed
+            exit();
+        }
+        
+        
         
         }
     catch(PDOException $e)
