@@ -19,12 +19,14 @@
         
                     <div id='userListBox'>
         
-                        <h1 class='boxHeader'>User List</h1>";
+                        <h1 class='boxHeader'>User List</h1>
+                        <form action='updateUser.php' method='post' id='updateUserForm'>
+                        
+                        ";
+                        
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $username = htmlspecialchars($_POST['username']);
-
-        echo $username;
     }
 
     $servername = "localhost";
@@ -37,16 +39,65 @@
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         echo "Connected successfully";
         
-        $stmt = $conn->prepare("SELECT username, password FROM users WHERE username = '$username' AND password = '$password'");
+        $stmt = $conn->prepare("SELECT id, username, password, email, ssn, date_of_birth, first_name, last_name FROM users WHERE username = '$username'");
         $stmt->execute();
 
         //so we can use name->value pairs
         if($stmt->rowCount() > 0){
-            /*  how to get data from query
+         
                 $row = $stmt->fetch(PDO::FETCH_ASSOC);
+                $queriedId = $row['id'];
                 $queriedUsername = $row['username'];
                 $queriedPassword = $row['password'];
-            */
+                $queriedEmail = $row['email'];
+                $queriedSsn = $row['ssn'];
+                $queriedDateOfBirth = $row['date_of_birth'];
+                $queriedFirstName = $row['first_name'];
+                $queriedLastName = $row['last_name'];
+            
+                echo " <label for='name'>Name:</label>
+                
+                <br>
+                <input type='hidden' name='id' value='" . $queriedId . "'>
+                
+                <input id='name' type='text' name='first_name' value='" . $queriedFirstName . "' placeholder='First'> 
+                <input type='text' name='last_name' value='" . $queriedLastName . "' placeholder='Last'>
+                
+                <br>
+                
+                <div class='side-by-side'>
+                    <label for='username'>Username:</label>
+                    <br>
+                    <input id='username' type='text' name='username' value='" . $queriedUsername . "' placeholder='Username' data-parsley-required data-parsley-length='[6, 30]'>
+                </div>
+                
+                <div class='side-by-side'>
+                    <label for='password'>Password:</label>
+                    <br>
+                    <input id='password' type='password' name='password' value='" . $queriedPassword . "'  placeholder='Password' data-parsley-required data-parsley-length='[6, 30]'>
+                </div>
+                
+                <br>
+                
+                <div class='side-by-side'>
+                    <label for='email'>Email:</label>
+                    <br>
+                    <input id='email' type='email' name='email' value='" . $queriedEmail . "'  placeholder='example@gmail.com' data-parsley-required data-parsley-length='[6, 30]'>
+                </div>
+                
+                <div class='side-by-side'>
+                    <label for='date_of_birth'>Date of Birth:</label>
+                    <br>
+                    <input id='date_of_birth' type='date' value='" . $queriedDateOfBirth . "' name='date_of_birth'>
+                </div>
+                
+                <div id='ssnBox'>
+                    <label for='ssn'>Social Security #: </label>
+                    <br>
+                    <input id='ssn' type='password' name='ssn' value='" . $queriedSsn . "'>
+                </div>
+            
+                <button id='newUserButton' type='submit' form='updateUserForm' class='button' value='Submit'>Update User</button> ";
            
         }
         else {
@@ -64,7 +115,7 @@
 
 
 
-echo "         
+echo "       </form>  
         </div>
     </body>
 </html>";
