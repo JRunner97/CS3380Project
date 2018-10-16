@@ -1,0 +1,314 @@
+* {
+    font-family: Arial, sans-serif;
+}
+
+body{
+    padding: 0;
+    margin: 0;
+}
+
+img#contentBackground{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -10;
+    height: 100%;
+    width: 100%;
+    
+}
+
+.navbar {
+    overflow: hidden;
+    background-color: black;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.navbar img {
+    float: left;
+    height: 70px;
+    width: 250px;
+    margin: 0;
+    
+}
+
+.navbar a.links {
+    float: right;
+    font-size: 20px;
+    color: white;
+    text-align: center;
+    padding: 25px 16px;
+    text-decoration: none;
+}
+
+.dropdown {
+    float: right;
+    overflow: hidden;
+}
+
+.dropdown .dropbtn {
+    font-size: 20px;    
+    border: none;
+    outline: none;
+    color: white;
+    padding: 25px 16px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+    background-color: #F1B82D;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    right: 0;
+}
+
+.dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+body#loginBody div#formContainer {
+    height: 290px;
+    width: 500px;
+    border-radius: 8px;
+    margin: 16% auto 10% auto;
+    padding: 10px;
+    background-color: white;
+    opacity: .98;
+}
+
+h1.boxHeader {
+    margin: auto;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    border-style: double none double none;
+    border: 10px 0 10px 0;
+    padding: 10px 0;
+    margin-top: 10px;
+    border-color: black;
+}
+
+body#loginBody form#loginForm input[type=text] {
+    width: 100%;
+    padding: 8px 5px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 15px;
+    box-sizing: border-box;
+}
+
+body#loginBody form#loginForm input[type=password] {
+    width: 100%;
+    padding: 8px 5px;
+    margin: 15px 0 10px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 15px;
+    box-sizing: border-box;
+}
+
+body#loginBody button#loginButton {
+    margin-top: 20px;
+}
+
+body#loginBody #loginForm {
+    margin-top: 30px;
+}
+
+.button {
+    background-color: #F1B82D;
+    border: none;
+    color: white;
+    padding: 5px 32px;
+    text-align: center;
+    width: 100%;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #4CAF50;
+}
+
+input.parsley-success,
+select.parsley-success,
+textarea.parsley-success {
+  color: #468847;
+  background-color: #DFF0D8;
+  border: 1px solid #D6E9C6;
+}
+
+input.parsley-error,
+select.parsley-error,
+textarea.parsley-error {
+  color: #B94A48;
+  background-color: #F2DEDE;
+  border: 1px solid #EED3D7;
+}
+
+.parsley-errors-list {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    position: relative;
+    z-index: 10;
+    font-size: 0.9em;
+    line-height: 0.9em;
+    opacity: 0;
+    color: mediumvioletred;
+
+  transition: all .3s ease-in;
+  -o-transition: all .3s ease-in;
+  -moz-transition: all .3s ease-in;
+  -webkit-transition: all .3s ease-in;
+}
+
+.parsley-errors-list.filled {
+  opacity: 1;
+}
+
+body#createUserBody div#createUserBox {
+    height: 425px;
+    width: 500px;
+    border-radius: 8px;
+    margin: 13% auto 0 auto;
+    padding: 10px;
+    background-color: white;
+    opacity: .98;
+}
+
+body#createUserBody button#newUserButton {
+    margin-top: 10px;
+}
+
+body#createUserBody form#createUserForm {
+    margin-top: 20px;
+}
+
+body#createUserBody .side-by-side {
+    display: inline-block;
+    width: 45%;
+}
+
+body#createUserBody form#createUserForm input[type=text] {
+    width: 40%;
+    padding: 8px 10px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 15px;
+    box-sizing: border-box;
+}
+
+body#createUserBody form#createUserForm > div.side-by-side > input[type=text] {
+    width: 100%;
+    padding: 8px 10px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 15px;
+    box-sizing: border-box;
+}
+
+body#createUserBody form#createUserForm input[type=password] {
+    width: 30%;
+    padding: 8px 5px;
+    margin: 7px 0 10px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 15px;
+    box-sizing: border-box;
+}
+
+body#createUserBody form#createUserForm > div.side-by-side > input[type=password] {
+    width: 100%;
+    padding: 8px 10px;
+    margin-top: 7px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 15px;
+    box-sizing: border-box;
+}
+
+body#createUserBody form#createUserForm > div.side-by-side > input[type=email] {
+    width: 100%;
+    padding: 8px 10px;
+    margin-top: 7px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 15px;
+    box-sizing: border-box;
+}
+
+body#createUserBody form#createUserForm > div.side-by-side > input[type=date] {
+    width: 90%;
+    padding: 8px 10px;
+    margin-top: 7px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 15px;
+    box-sizing: border-box;
+}
+
+body#createUserBody form#createUserForm > div#ssnBox {
+    margin-top: 10px;
+}
+
+body#userListBody div#userListBox {
+    height: 425px;
+    width: 500px;
+    border-radius: 8px;
+    margin: 13% auto 0 auto;
+    padding: 10px;
+    background-color: white;
+    opacity: .98;
+}
+
+body#userListBody div#userListBox tr.highlight { 
+    background-color: red; 
+}
+
+body#userListBody div#userListBox table#data {
+    border-collapse: collapse;
+    text-align: center;
+}
+
+body#editUserBody div#editUserBox {
+    height: 425px;
+    width: 500px;
+    border-radius: 8px;
+    margin: 13% auto 0 auto;
+    padding: 10px;
+    background-color: white;
+    opacity: .98;
+}
