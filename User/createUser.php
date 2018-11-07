@@ -11,9 +11,9 @@
     }
 
 
-    $servername = "localhost";
-    $dbUsername = "root";
-    $dbPassword = "cs12345";
+    $servername = "ec2-18-218-134-37.us-east-2.compute.amazonaws.com";
+    $dbUsername = "ProjectUser";
+    $dbPassword = "12345";
 
     try {
         $conn = new PDO("mysql:host=$servername;dbname=CS3380", $dbUsername, $dbPassword);
