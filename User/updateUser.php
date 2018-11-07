@@ -11,7 +11,6 @@
         $first_name  = htmlspecialchars($_POST['first_name']);
         $last_name  = htmlspecialchars($_POST['last_name']);
         $date_of_birth  = htmlspecialchars($_POST['date_of_birth']);
-        $ssn  = htmlspecialchars($_POST['ssn']);
     }
 
     $servername = "ec2-18-218-134-37.us-east-2.compute.amazonaws.com";
@@ -32,7 +31,7 @@
            
             $createdTimestamp = date('Y-m-d G:i:s');
 
-            $sql = "UPDATE users SET username='$username', password='$password', email='$email', first_name='$first_name', last_name='$last_name', date_of_birth='$date_of_birth', ssn='$ssn' WHERE id='$id'";
+            $sql = "UPDATE users SET username='$username', pword='$password', email='$email', fName='$first_name', lName='$last_name', DOB='$date_of_birth' WHERE id='$id'";
 
             // Prepare statement
             $stmt = $conn->prepare($sql);

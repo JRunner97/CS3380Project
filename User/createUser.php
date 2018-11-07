@@ -7,7 +7,6 @@
         $first_name  = htmlspecialchars($_POST['first_name']);
         $last_name  = htmlspecialchars($_POST['last_name']);
         $date_of_birth  = htmlspecialchars($_POST['date_of_birth']);
-        $ssn  = htmlspecialchars($_POST['ssn']);
     }
 
 
@@ -28,8 +27,8 @@
             $createdTimestamp = date('Y-m-d G:i:s');
 
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $sql = "INSERT INTO users (username, password, email, first_name, last_name, date_of_birth, ssn, created_at)
-            VALUES ('$username', '$password', '$email', '$first_name', '$last_name', '$date_of_birth', '$ssn', '$createdTimestamp')";
+            $sql = "INSERT INTO users (username, pword, email, fName, lName, DOB, timeCreated)
+            VALUES ('$username', '$password', '$email', '$first_name', '$last_name', '$date_of_birth', '$createdTimestamp')";
 
             // note use of exec() instead of execute()
             $conn->exec($sql);

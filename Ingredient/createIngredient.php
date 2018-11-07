@@ -1,8 +1,8 @@
 <?php
     // cleans post data of unwanted char
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $username = htmlspecialchars($_POST['ingredient_name']);
-        $password  = htmlspecialchars($_POST['quantity']);
+        $ingredient_name = htmlspecialchars($_POST['ingredient_name']);
+        $quantity  = htmlspecialchars($_POST['quantity']);
     }
 
 
@@ -23,8 +23,8 @@
             $createdTimestamp = date('Y-m-d G:i:s');
 
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $sql = "INSERT INTO users (username, password, email, first_name, last_name, date_of_birth, ssn, created_at)
-            VALUES ('$username', '$password', '$email', '$first_name', '$last_name', '$date_of_birth', '$ssn', '$createdTimestamp')";
+            $sql = "INSERT INTO ingredients (userID, ingredientName, quantity)
+            VALUES ('$ingredient_name', '$quantity')";
 
             // note use of exec() instead of execute()
             $conn->exec($sql);

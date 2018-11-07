@@ -51,21 +51,20 @@
         // set the PDO error mode to exception
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         
-        $stmt = $conn->prepare("SELECT id, username, password, email, ssn, date_of_birth, first_name, last_name FROM users WHERE username = '$username'");
+        $stmt = $conn->prepare("SELECT userID, username, pword, email, DOB, fName, lName FROM users WHERE username = '$username'");
         $stmt->execute();
 
         //so we can use name->value pairs
         if($stmt->rowCount() > 0){
          
                 $row = $stmt->fetch(PDO::FETCH_ASSOC);
-                $queriedId = $row['id'];
+                $queriedId = $row['userID'];
                 $queriedUsername = $row['username'];
-                $queriedPassword = $row['password'];
+                $queriedPassword = $row['pword'];
                 $queriedEmail = $row['email'];
-                $queriedSsn = $row['ssn'];
-                $queriedDateOfBirth = $row['date_of_birth'];
-                $queriedFirstName = $row['first_name'];
-                $queriedLastName = $row['last_name'];
+                $queriedDateOfBirth = $row['DOB'];
+                $queriedFirstName = $row['fName'];
+                $queriedLastName = $row['lName'];
             
                 echo " <label for='name'>Name:</label>
                 
@@ -101,12 +100,6 @@
                     <label for='date_of_birth'>Date of Birth:</label>
                     <br>
                     <input id='date_of_birth' type='date' value='" . $queriedDateOfBirth . "' name='date_of_birth'>
-                </div>
-                
-                <div id='ssnBox'>
-                    <label for='ssn'>Social Security #: </label>
-                    <br>
-                    <input id='ssn' type='password' name='ssn' value='" . $queriedSsn . "'>
                 </div>
             
                 <button id='newUserButton' type='submit' form='updateUserForm' class='button' value='Submit'>Update User</button> ";

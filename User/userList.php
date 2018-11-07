@@ -35,7 +35,7 @@
         
                         <h1 class='boxHeader'>User List</h1>
                         <button onclick='PostRequestFromUserList()' value='submit'>Edit</button>
-                        <button value='submit'>Delete</button>
+                        <button onclick='DeleteUserFromList()' value='submit'>Delete</button>
                             <table id='data'>
 
                                 <tr>
@@ -53,7 +53,7 @@
 
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $stmt = $conn->prepare("SELECT username, email, date_of_birth FROM users");
+        $stmt = $conn->prepare("SELECT username, email, DOB FROM users");
         $stmt->execute();
 
 
@@ -68,7 +68,7 @@
                     echo "  <tr>
                                 <td class='username'>" . $userRow["username"] . "</td>
                                 <td class='email'>" . $userRow["email"] . "</td>
-                                <td class='date_of_birth'>" . $userRow["date_of_birth"] . "</td>
+                                <td class='date_of_birth'>" . $userRow["DOB"] . "</td>
                             </tr>";
                 }
         }
