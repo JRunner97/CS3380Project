@@ -11,8 +11,8 @@
     }
 
     $servername = "localhost";
-    $dbUsername = "root";
-    $dbPassword = "cs12345";
+    $dbUsername = "ProjectUser";
+    $dbPassword = "12345";
 
     try {
         $conn = new PDO("mysql:host=$servername;dbname=CS3380", $dbUsername, $dbPassword);

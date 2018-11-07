@@ -10,7 +10,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.8.1/parsley.min.js"></script> 
     </head>
 
-    <body id="createUserBody">
+    <body id="createIngredientBody">
         <div class="navbar">
             <a>
                 <img src="https://engineering.missouri.edu//wp-content/themes/g5plus-orion/assets/images/missouri-logo.svg">
@@ -30,54 +30,33 @@
         
         <img id="contentBackground" src="https://mizzoumag.missouri.edu/wp-content/uploads/2013/11/quad_web.jpg">
         
-        <div id="createUserBox">
+        <div id="createIngredientBox">
         
-            <h1 class="boxHeader">Create New User</h1>
+            <h1 class="boxHeader">Create New Ingredient</h1>
             
-            <form id="createUserForm" action="createUser.php" method="post" data-parsley-validate>
+            <form id="createIngredientForm" action="createIngredient.php" method="post" data-parsley-validate>
                 
                 <label for="name">Name:</label>
                 
                 <br>
                 
-                <input id="name" type="text" name="first_name" placeholder="First"> 
-                <input type="text" name="last_name" placeholder="Last">
+                <input id="name" type="text" name="ingredient_name" placeholder="Ingredient"> 
                 
                 <br>
                 
                 <div class="side-by-side">
-                    <label for="username">Username:</label>
+                    <label for="username">Quantity:</label>
                     <br>
-                    <input id="username" type="text" name="username" placeholder="Username" data-parsley-required data-parsley-length="[6, 30]">
+                    <input id="quantity" type="text" name="quantity" placeholder="Quantity">
                 </div>
                 
                 <div class="side-by-side">
                     <label for="password">Password:</label>
                     <br>
-                    <input id="password" type="password" name="password" placeholder="Password" data-parsley-required data-parsley-length="[6, 30]">
-                </div>
-                
-                <br>
-                
-                <div class="side-by-side">
-                    <label for="email">Email:</label>
-                    <br>
-                    <input id="email" type="email" name="email" placeholder="example@gmail.com" data-parsley-required data-parsley-length="[6, 30]">
-                </div>
-                
-                <div class="side-by-side">
-                    <label for="date_of_birth">Date of Birth:</label>
-                    <br>
-                    <input id="date_of_birth" type="date" name="date_of_birth">
-                </div>
-                
-                <div id="ssnBox">
-                    <label for="ssn">Social Security #: </label>
-                    <br>
-                    <input id="ssn" type="password" name="ssn" placeholder="XXXXXXXXX">
+                    <input id="password" type="password" name="password" placeholder="Password">
                 </div>
             
-                <button id="newUserButton" type="submit" form="createUserForm" class="button" value="Submit">Create User</button>
+                <button id="newIngredientButton" type="submit" form="createIngredientForm" class="button" value="Submit">Create User</button>
             
             </form>
         

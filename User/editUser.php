@@ -50,7 +50,6 @@
         $conn = new PDO("mysql:host=$servername;dbname=CS3380", $dbUsername, $dbPassword);
         // set the PDO error mode to exception
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        echo "Connected successfully";
         
         $stmt = $conn->prepare("SELECT id, username, password, email, ssn, date_of_birth, first_name, last_name FROM users WHERE username = '$username'");
         $stmt->execute();

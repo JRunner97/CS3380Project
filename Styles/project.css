@@ -303,7 +303,26 @@ body#userListBody div#userListBox table#data {
     text-align: center;
 }
 
+body#userListBody table {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+body#userListBody td, body#userListBody th {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
 body#editUserBody div#editUserBox {
+    height: 425px;
+    width: 500px;
+    border-radius: 8px;
+    margin: 13% auto 0 auto;
+    padding: 10px;
+    background-color: white;
+    opacity: .98;
+}
+
+body#createIngredientBody div#createIngredientBox {
     height: 425px;
     width: 500px;
     border-radius: 8px;

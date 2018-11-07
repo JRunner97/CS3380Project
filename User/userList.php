@@ -34,14 +34,14 @@
                     <div id='userListBox'>
         
                         <h1 class='boxHeader'>User List</h1>
-                        <button onclick='PostRequestFromUserList()' value='Submit'>Submit</button>
+                        <button onclick='PostRequestFromUserList()' value='submit'>Edit</button>
+                        <button value='submit'>Delete</button>
                             <table id='data'>
 
                                 <tr>
                                     <th>Username</th>
                                     <th>Email</th>
                                     <th>Date of Birth</th>
-                                    <th>Edit</th>
                                 </tr>";
 
     $servername = "localhost";
