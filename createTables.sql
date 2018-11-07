@@ -6,8 +6,8 @@ CREATE TABLE users (
     pword VARCHAR(20) NOT NULL,
     DOB DATE,
     email VARCHAR(40) NOT NULL,
-    timeCreated TIMESTAMP,
-    timeUpdated TIMESTAMP,
+    timeCreated TIMESTAMP(6),
+    timeUpdated TIMESTAMP(6),
     CONSTRAINT PK_users PRIMARY KEY (userID)
 );
 
