@@ -70,6 +70,5 @@ CREATE TABLE groceryList (
     ingredients VARCHAR(100),
     userFName VARCHAR(20),
     CONSTRAINT PK_groceryList PRIMARY KEY (listID, userID),
-    CONSTRAINT FK_userGroceryList FOREIGN KEY (userID) REFERENCES users(userID),
-    CONSTRAINT FK_userNameGroceryList FOREIGN KEY (userFName) REFERENCES users(fName)
+    CONSTRAINT FK_userGroceryList FOREIGN KEY (userID) REFERENCES users(userID)
 );
