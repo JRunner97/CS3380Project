@@ -46,7 +46,7 @@ session_start();
             
             // TODO add flash messages
             // redirects user back to createUser.html page if username already taken
-            header("Location: /CS3380Project/User/createIngredient.html");
+            header("Location: /CS3380Project/Ingredient/createIngredient.html");
             
             // makes it so that the rest of the code isn't executed
             exit();
