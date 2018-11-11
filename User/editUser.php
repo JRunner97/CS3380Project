@@ -1,43 +1,41 @@
-<?php
+<!DOCTYPE  html>
+    <html lang='en'>
+        <head>
+            <title>CS3380 Project | User List</title>
+            <meta charset='utf-8'>
+            <link rel='stylesheet' type='text/css' href='../Styles/project.css'>
+            <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+            <script src='https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.8.1/parsley.min.js'></script>
 
-    echo "<!DOCTYPE  html>
-            <html lang='en'>
-                <head>
-                    <title>CS3380 Project | User List</title>
-                    <meta charset='utf-8'>
-                    <link rel='stylesheet' type='text/css' href='../Styles/project.css'>
-                    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
-                    <script src='https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.8.1/parsley.min.js'></script>
-                    
-                </head>
-                <body id='editUserBody'>
-                    <div class='navbar'>
-                        <a>
-                            <img src='https://engineering.missouri.edu//wp-content/themes/g5plus-orion/assets/images/missouri-logo.svg'>
-                        </a>
-                        <div class='dropdown'>
-                            <button class='dropbtn'>Pages 
-                                <i class='fa fa-caret-down'></i>
-                            </button>
-                            <div class='dropdown-content'>
-                                <a href='/CS3380Project/User/createUser.html'>Create User</a>
-                                <a href='/CS3380Project/User/userList.php'>User List</a>
-                            </div>
-                        </div> 
-                        <a href='#home' class='links'>Home</a>
-                        <a href='#news' class='links'>News</a>
+        </head>
+        <body id='editUserBody'>
+            <div class='navbar'>
+                <a>
+                    <img src='https://engineering.missouri.edu//wp-content/themes/g5plus-orion/assets/images/missouri-logo.svg'>
+                </a>
+                <div class='dropdown'>
+                    <button class='dropbtn'>Pages 
+                        <i class='fa fa-caret-down'></i>
+                    </button>
+                    <div class='dropdown-content'>
+                        <a href='/CS3380Project/User/createUser.html'>Create User</a>
+                        <a href='/CS3380Project/User/userList.php'>User List</a>
                     </div>
-        
-                    <img id='contentBackground' src='https://mizzoumag.missouri.edu/wp-content/uploads/2013/11/quad_web.jpg'>
-        
-                    <div id='editUserBox'>
-        
-                        <h1 class='boxHeader'>Edit User</h1>
-                        <form action='updateUser.php' method='post' id='updateUserForm'>
-                        
-                        ";
-                        
+                </div> 
+                <a href='#home' class='links'>Home</a>
+                <a href='#news' class='links'>News</a>
+            </div>
 
+            <img id='contentBackground' src='https://mizzoumag.missouri.edu/wp-content/uploads/2013/11/quad_web.jpg'>
+
+            <div id='editUserBox'>
+
+                <h1 class='boxHeader'>Edit User</h1>
+                <form action='updateUser.php' method='post' id='updateUserForm'>
+                        
+                        
+                        
+<?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $username = htmlspecialchars($_POST['username']);
     }
@@ -109,8 +107,6 @@
             print_r("invalid credentials");
         }
         
-        
-        
 
         }
     catch(PDOException $e)
@@ -118,11 +114,8 @@
         echo "Connection failed: " . $e->getMessage();
         }
 
-
-
-echo "       </form>  
+?>
+            </form>  
         </div>
     </body>
-</html>";
-
-?>
+</html>

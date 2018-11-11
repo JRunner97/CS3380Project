@@ -1,9 +1,6 @@
 <?php
-// Start the session
-session_start();
-?>
-
-<?php
+    // Start the session
+    session_start();
     // cleans post data of unwanted char
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $ingredient_name = htmlspecialchars($_POST['ingredient_name']);
@@ -18,16 +15,20 @@ session_start();
     try {
         $conn = new PDO("mysql:host=$servername;dbname=CS3380", $dbUsername, $dbPassword);
 
-        $stmt = $conn->prepare("SELECT ingredientID FROM ingredients WHERE ingredientName = '$ingredient_name'");
+        $stmt = $conn->prepare("SELECT ingredientID FROM ingredients WHERE ingredientName = '$ingredient_name' AND userID = '$_SESSION[currentUser]'");
         $stmt->execute();
+
 
         // checks if a query returned a tuple from db
         // if it did then the username is taken
         if($stmt->rowCount() == 0){
+
            
             $createdTimestamp = date('Y-m-d G:i:s');
 
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            
+            // gets the ID of the currently logged-in user from $SESSION super global
             $sql = "INSERT INTO ingredients (userID, ingredientName, quantity)
             VALUES ('$_SESSION[currentUser]','$ingredient_name', '$quantity')";
 
@@ -36,13 +37,14 @@ session_start();
             
             // TODO add flash messages
             // redirects user back to userList.php page if successful
-            header("Location: /CS3380Project/Ingredient/listIngredients.php");
+            header("Location: /CS3380Project/Ingredient/ingredientList.php");
             
             // makes it so that the rest of the code isn't executed
             exit();
            
         }
         else {
+   
             
             // TODO add flash messages
             // redirects user back to createUser.html page if username already taken

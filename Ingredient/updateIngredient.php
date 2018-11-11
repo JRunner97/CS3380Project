@@ -5,12 +5,8 @@
 //
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $id = htmlspecialchars($_POST['id']);
-        $username = htmlspecialchars($_POST['username']);
-        $password  = htmlspecialchars($_POST['password']);
-        $email  = htmlspecialchars($_POST['email']);
-        $first_name  = htmlspecialchars($_POST['first_name']);
-        $last_name  = htmlspecialchars($_POST['last_name']);
-        $date_of_birth  = htmlspecialchars($_POST['date_of_birth']);
+        $ingredientName = htmlspecialchars($_POST['ingredientName']);
+        $quantity  = htmlspecialchars($_POST['quantity']);
     }
 
     $servername = "ec2-18-218-134-37.us-east-2.compute.amazonaws.com";
@@ -22,8 +18,8 @@
         $conn = new PDO("mysql:host=$servername;dbname=CS3380", $dbUsername, $dbPassword);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        // checks if new username is taken by a different user
-        $stmt = $conn->prepare("SELECT username FROM users WHERE username = '$username' AND userID <> '$id'");
+        // checks if ingredient already exists for this user
+        $stmt = $conn->prepare("SELECT ingredientName FROM ingredients WHERE ingredientName = '$ingredientName' AND ingredientID <> '$id'");
         $stmt->execute();
 
         // checks if a query returned a tuple from db
@@ -32,7 +28,7 @@
            
             $createdTimestamp = date('Y-m-d G:i:s');
 
-            $sql = "UPDATE users SET username='$username', pword='$password', email='$email', fName='$first_name', lName='$last_name', DOB='$date_of_birth' WHERE userID='$id'";
+            $sql = "UPDATE ingredients SET ingredientName='$ingredientName', quantity='$quantity' WHERE ingredientID='$id'";
 
             // Prepare statement
             $stmt = $conn->prepare($sql);
@@ -42,7 +38,7 @@
             
             // TODO add flash messages
             // redirects user back to userList.php page if successful
-            header("Location: /CS3380Project/User/userList.php");
+            header("Location: /CS3380Project/Ingredient/ingredientList.php");
             
             // makes it so that the rest of the code isn't executed
             exit();
@@ -53,7 +49,7 @@
             // TODO add flash messages
             
             // redirects user back to userList.php page if username already taken
-            header("Location: /CS3380Project/User/userList.php");
+            header("Location: /CS3380Project/Ingredient/ingredientList.php");
             
             // makes it so that the rest of the code isn't executed
             exit();
