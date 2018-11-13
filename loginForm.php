@@ -35,10 +35,18 @@
         <div id="formContainer">
 
             <h1 class="boxHeader">CS3380 Project Login</h1>
+            
+            <?php
+                if ($error) {
+                    print "<div class=\"ui-state-error\">$error</div>\n";
+                }
+            ?>
 
             <form id="loginForm" action="login.php" method="post" data-parsley-validate>
+                
+                <input type="hidden" name="action" value="do_login">
 
-                <input type="text" id="username" name="user" placeholder="Username" data-parsley-required 	data-parsley-length="[6, 30]">
+                <input type="text" id="username" name="user" placeholder="Username" autofocus value="<?php print $username; ?>" data-parsley-required 	data-parsley-length="[6, 30]">
                 <br>
                 <input type="password" id="password" name="password" placeholder="Password" data-parsley-required data-parsley-length="[6, 30]" >
 
