@@ -34,14 +34,15 @@
         <div id="groceryListBox">
         
             <h1 class="boxHeader">Grocery List</h1>
-            <!-- Use a script to get the JSON ingredients data, then decode and use innerHTML to print --> 
-            <p id="groceryListItems"><br>Hey</p>
+            <!-- Uses the script below to get the JSON ingredients data, then decode and use innerHTML to print -->
+            <p id="groceryListItems"><br>Hey<br></p>
             
         </div>
     
+        <!-- JavaScript to request the user's grocery list -->
         <script>
             var obj, dbParam, xmlhttp, myObj, x, txt = "";
-            obj = { "table":"favoriteIngredients" };
+            obj = { "table":"ingredients" };
             dbParam = JSON.stringify(obj);
             xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function() {
@@ -54,7 +55,7 @@
                 }
             };
             xmlhttp.open("POST", "groceryList.php", true);
-            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); //May need to change?
+            xmlhttp.setRequestHeader("Content-type", "Applications/XAMPP/htdocs/CS3380Project/GroceryList/groceryList.php"); //What header?
             xmlhttp.send("x=" + dbParam);
 
         </script>
