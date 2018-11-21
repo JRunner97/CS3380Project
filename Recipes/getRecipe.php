@@ -66,9 +66,10 @@
                                     </tr>
                                 ";
                         foreach($row as $recipeRow){
-                            
+                            // get json
                             $jsonObject = json_decode($recipeRow['ingredients'], true);
                             
+                            // implode breaks json contents into comma seperated list
                             echo "  
                                     <tr>
                                         <td class='recipeName'>" . $recipeRow["recipeName"] . "</td>
