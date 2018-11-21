@@ -66,11 +66,14 @@
                                     </tr>
                                 ";
                         foreach($row as $recipeRow){
+                            
+                            $jsonObject = json_decode($recipeRow['ingredients'], true);
+                            
                             echo "  
                                     <tr>
                                         <td class='recipeName'>" . $recipeRow["recipeName"] . "</td>
                                         <td class='cookTime'>" . $recipeRow["cookTime"] . "</td>
-                                        <td class='ingredients'>" . $recipeRow["ingredients"] . "</td>
+                                        <td class='ingredients'>" . implode(", ", array_keys($jsonObject)) . "</td>
                                         <td class='$attribute'>" . $recipeRow["$attribute"] . "</td>
                                     </tr>
                                 ";

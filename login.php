@@ -59,7 +59,6 @@
 	}
 	
 	function login_form() {
-		$username = "";
 		$error = "";
 		require "loginForm.php";
 	}

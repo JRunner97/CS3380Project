@@ -1,9 +1,7 @@
 <?php
 // Start the session
 session_start();
-?>
 
-<?php
 
     header("Content-Type: application/json; Applications/XAMPP/htdocs/CS3380Project/GroceryList/groceryList.html");
     $obj = json_decode($_POST["x"], false);

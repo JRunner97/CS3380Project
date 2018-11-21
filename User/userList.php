@@ -1,5 +1,4 @@
 <?php
-// Created by Professor Wergeles for CS2830 at the University of Missouri
 
     if(!session_start()){
         header("Location: /CS3380Project/error.php");

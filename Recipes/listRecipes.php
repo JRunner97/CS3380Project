@@ -1,9 +1,23 @@
+<?php
+
+    if(!session_start()){
+        header("Location: /CS3380Project/error.php");
+        exit;
+    }
+
+	$currentUser = empty($_SESSION['currentUser']) ? false : $_SESSION['currentUser'];
+	if (!$currentUser) {
+		header("Location: /CS3380Project/login.php");
+		exit;
+	}
+?>
 <!DOCTYPE html>
 <html lang="en">
     
 
         <head>
             <title>Recipes</title>
+            <meta charset="utf-8">
         </head>
     
     
@@ -52,30 +66,30 @@
 
                 if($stmt->rowCount() > 0){
 
-                        $row = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        //                $queriedUsername = $row['username'];
-        //                $queriedPassword = $row['password'];
-        //                print_r($row);
-        //                print_r($row[0]['username']);
-                        foreach($row as $recipeRow){
-                            echo "  
-                                    <tr>
-                                        <td class='recipeName'>" . $recipeRow["recipeName"] . "</td>
-                                        <td class='cookTime'>" . $recipeRow["cookTime"] . "</td>
-                                        <td class='ingredients'>" . $recipeRow["ingredients"] . "</td>
-                                        <td><form action='favoriteRecipe.php'>
-                                            <input type='hidden' name='recID' value='".$recipeRow["recipeID"]."' />
-                                            <input type='submit' value='Favorite'>
-                                            </form></td>
-                                    </tr>
-                                ";
-                        }
+                    $row = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+                    foreach($row as $recipeRow){
+
+                        $jsonObject = json_decode($recipeRow['ingredients'], true);
+
+                        echo "  
+                            <tr>
+                                <td class='recipeName'>" . $recipeRow["recipeName"] . "</td>
+                                <td class='cookTime'>" . $recipeRow["cookTime"] . "</td>
+                                <td class='ingredients'>". implode(", ", array_keys($jsonObject)) . "</td>
+                                <td><form action='favoriteRecipe.php'>
+                                    <input type='hidden' name='recID' value='".$recipeRow["recipeID"]."' />
+                                    <input type='submit' value='Favorite'>
+                                    </form></td>
+                            </tr>
+                        ";
+                    }
                 }
 
                 }
             catch(PDOException $e)
                 {
-                    
+                    header("Location: /CS3380Project/login.php");
                 }
             
         ?>
