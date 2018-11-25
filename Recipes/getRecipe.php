@@ -1,9 +1,16 @@
 <?php
     //start session or redirect if cannot initialize
+
     if(!session_start()){
-        header("Location: error.php");
+        header("Location: /CS3380Project/error.php");
         exit;
     }
+
+	$currentUser = empty($_SESSION['currentUser']) ? false : $_SESSION['currentUser'];
+	if (!$currentUser) {
+		header("Location: /CS3380Project/login.php");
+		exit;
+	}
 
 ?>
 <!DOCTYPE html>

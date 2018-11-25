@@ -47,8 +47,8 @@
                     <a href='/CS3380Project/Ingredient/ingredientList.php'>Ingredient List</a>
                 </div>
             </div> 
-            <a href='#home' class='links'>Home</a>
-            <a href='#news' class='links'>News</a>
+            <a href="/CS3380Project/Recipes/listRecipes.php" class='links'>Recipes</a>
+            <a href="/CS3380Project/GroceryList/groceryList.php" class='links'>Grocery List</a>
             <a href='/CS3380Project/logout.php' class='links'>Logout</a>
         </div>
         

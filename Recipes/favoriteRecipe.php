@@ -1,9 +1,16 @@
 <?php
     // start session or redirect to error page if unable to initialize
+
     if(!session_start()){
-        header("Location: error.php");
+        header("Location: /CS3380Project/error.php");
         exit;
     }
+
+	$currentUser = empty($_SESSION['currentUser']) ? false : $_SESSION['currentUser'];
+	if (!$currentUser) {
+		header("Location: /CS3380Project/login.php");
+		exit;
+	}
 
     
     $servername = "ec2-18-218-134-37.us-east-2.compute.amazonaws.com";
