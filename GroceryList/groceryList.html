@@ -35,28 +35,29 @@
         
             <h1 class="boxHeader">Grocery List</h1>
             <!-- Uses the script below to get the JSON ingredients data, then decode and use innerHTML to print -->
-            <p id="groceryListItems"><br>Hey<br></p>
+            <ul id="groceryListItems"></ul>
             
         </div>
     
         <!-- JavaScript to request the user's grocery list -->
         <script>
-            var obj, dbParam, xmlhttp, myObj, x, txt = "";
-            obj = { "table":"ingredients" };
-            dbParam = JSON.stringify(obj);
-            xmlhttp = new XMLHttpRequest();
-            xmlhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    myObj = JSON.parse(this.responseText);
-                    for (x in myObj) {
-                        txt += myObj[x].name + "<br>";
+            
+            $(function(){
+                $.get("groceryList.php", function(data, status){
+
+                    var ingredients = JSON.parse(data);     
+
+                    for (var key in ingredients) {
+                        
+                        // skip loop if the property is from prototype
+                        if (!ingredients.hasOwnProperty(key)) continue;
+                        
+                        // adds missing ingredients to unordered list
+                        var obj = ingredients[key];
+                        $("#groceryListItems").append("<li>" + obj + "</li>");
                     }
-                    document.getElementById("groceryListItems").innerHTML = txt;
-                }
-            };
-            xmlhttp.open("POST", "groceryList.php", true);
-            xmlhttp.setRequestHeader("Content-type", "Applications/XAMPP/htdocs/CS3380Project/GroceryList/groceryList.php"); //What header?
-            xmlhttp.send("x=" + dbParam);
+                });
+            });
 
         </script>
         

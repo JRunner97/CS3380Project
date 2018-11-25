@@ -27,7 +27,7 @@
             // TODO add flash message to display on listRecipes, that indicates 'favorite' was successful
 
             // redirect to listRecipes if successfully added to favorites list
-            header("Location: Recipes/listRecipes.php");
+            header("Location: listRecipes.php");
         }
 
     }
