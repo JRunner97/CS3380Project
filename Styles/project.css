@@ -333,7 +333,7 @@ body#createIngredientBody div#createIngredientBox {
 }
 
 body#groceryListBody div#groceryListBox {
-    height: 600px;
+    height: 500px;
     width: 350px;
     border-radius: 8px;
     margin: 3% auto 20% auto;

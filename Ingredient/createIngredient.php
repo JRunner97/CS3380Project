@@ -22,7 +22,6 @@
         // checks if a query returned a tuple from db
         // if it did then the ingredient is already entered into the db
         if($stmt->rowCount() == 0){
-
            
             $createdTimestamp = date('Y-m-d G:i:s');
 
