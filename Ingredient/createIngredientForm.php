@@ -58,7 +58,7 @@
             <h1 class="boxHeader">Create New Ingredient</h1>
             
             <form id="createIngredientForm" action="createIngredient.php" method="post" data-parsley-validate>
-                
+                <br>
                 <label for="name">Name:</label>
                 
                 <br>
@@ -66,7 +66,7 @@
                 <input id="name" type="text" name="ingredient_name" placeholder="Ingredient"> 
                 
                 <br>
-                
+                <br>
                 <div class="side-by-side">
                     <label for="username">Quantity:</label>
                     <br>
