@@ -20,7 +20,7 @@
 
 
         // checks if a query returned a tuple from db
-        // if it did then the username is taken
+        // if it did then the ingredient is already entered into the db
         if($stmt->rowCount() == 0){
 
            
@@ -36,7 +36,7 @@
             $conn->exec($sql);
             
             // TODO add flash messages
-            // redirects user back to userList.php page if successful
+            // redirects user back to ingredient list page if successful
             header("Location: /CS3380Project/Ingredient/ingredientList.php");
             
             // makes it so that the rest of the code isn't executed
@@ -47,8 +47,8 @@
    
             
             // TODO add flash messages
-            // redirects user back to createUser.html page if username already taken
-            header("Location: /CS3380Project/Ingredient/createIngredient.html");
+            // redirects user back to ingredient list if ingredient is already entered
+            header("Location: /CS3380Project/Ingredient/ingredientList.php");
             
             // makes it so that the rest of the code isn't executed
             exit();

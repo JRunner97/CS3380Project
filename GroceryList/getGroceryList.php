@@ -61,9 +61,20 @@
             // cycles through my ingredients
             // if you already have an ingredient, then it is removed from $requiredIngredients list
         foreach($myIngredients as $myIngredient => $value){
+            print_r($myIngredient);
+            print_r($value);
+            print_r($requiredIngredients[$myIngredient]);
             if(in_array($value, $requiredIngredients)){
-                unset($requiredIngredients[$myIngredient]);
+                //unset($requiredIngredients[$myIngredient]);
+                array_splice($requiredIngredients, array_search($value), 1);
             }
+            print_r($requiredIngredients);
+            
+            
+//            $array = array(0 => "a", 1 => "b", 2 => "c");
+//            array_splice($array, 1, 1);
+            
+            
         }
         
         $myJSON = json_encode($requiredIngredients);

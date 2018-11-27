@@ -18,24 +18,49 @@
     $dbPassword = "12345";
 
     try{   
+        
         $recID= $_GET["recID"];
-
+        
         $conn = new PDO("mysql:host=$servername;dbname=CS3380", $dbUsername, $dbPassword);
 
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $stmt = $conn->prepare("SELECT recipeID FROM favorite WHERE userID = '$_SESSION[currentUser]' AND recipeID = '$recID'");
+        $stmt->execute();
 
-        $userID = $_SESSION['currentUser'];
+        // checks if a query returned a tuple from db
+        // if it did then the recipe is already favorited
+        if($stmt->rowCount() == 0){
+           
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $favorite = $conn->prepare("INSERT INTO favorite (userID, recipeID) VALUES($userID, $recID)");
-        $favorite->execute();
+            $userID = $_SESSION['currentUser'];
 
-        if($favorite->rowCount() > 0){
+            $favorite = $conn->prepare("INSERT INTO favorite (userID, recipeID) VALUES($userID, $recID)");
+            $favorite->execute();
 
-            // TODO add flash message to display on listRecipes, that indicates 'favorite' was successful
+            if($favorite->rowCount() > 0){
 
-            // redirect to listRecipes if successfully added to favorites list
-            header("Location: listRecipes.php");
+                // TODO add flash message to display on listRecipes, that indicates 'favorite' was successful
+
+                // redirect to listRecipes if successfully added to favorites list
+                header("Location: listRecipes.php");
+            }
+            
+            // makes it so that the rest of the code isn't executed
+            exit();
+           
         }
+        else {
+            
+            // TODO add flash messages
+            // redirects user back to listRecipes if the recipe has already been favorited
+            header("Location: /CS3380Project/Recipes/listRecipes.php");
+            
+            // makes it so that the rest of the code isn't executed
+            exit();
+        }
+        
+        
+        
 
     }
     catch(PDOException $e){
