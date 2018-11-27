@@ -72,8 +72,8 @@
                     <br>
                     <input id="quantity" type="text" name="quantity" placeholder="Quantity">
                 </div>
-            
-                <button id="newIngredientButton" type="submit" form="createIngredientForm" class="button" value="Submit">Create User</button>
+                <br>
+                <button id="newIngredientButton" type="submit" form="createIngredientForm" class="button" value="Submit">Add Ingredient</button>
             
             </form>
         
