@@ -3,7 +3,7 @@
     session_start();
     // cleans post data of unwanted char
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $ingredient_name = htmlspecialchars($_POST['ingredient_name']);
+        $ingredient_name = strtolower(htmlspecialchars($_POST['ingredient_name']));
         $quantity  = htmlspecialchars($_POST['quantity']);
     }
 
