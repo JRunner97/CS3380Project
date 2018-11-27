@@ -11,21 +11,53 @@
 		exit;
 	}
 ?>
-<!DOCTYPE html>
-<html lang="en">
-    
-
+<!DOCTYPE  html>
+    <html lang='en'>
         <head>
-            <title>Recipes</title>
-            <meta charset="utf-8">
+            <title>CS3380 Project | User List</title>
+            <meta charset='utf-8'>
+            <link rel='stylesheet' type='text/css' href='../Styles/project.css'>
+            <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+            <script src='https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.8.1/parsley.min.js'></script>
+            <script src='../Scripts/userList.js'></script>
+
         </head>
-    
-    
-    <body>
-        
-        <h1><center>Recipes</center></h1>
-        <form action="getRecipe.php" method="get">
-            <div style="background-color:lightgoldenrodyellow">
+        <body id='userListBody'>
+            <div class="navbar">
+                <a>
+                    <img src="https://engineering.missouri.edu//wp-content/themes/g5plus-orion/assets/images/missouri-logo.svg">
+                </a>
+                <div class='dropdown'>
+                    <button class='dropbtn'>Users 
+                        <i class='fa fa-caret-down'></i>
+                    </button>
+                    <div class='dropdown-content'>
+                        <a href='/CS3380Project/User/createUserForm.php'>Create User</a>
+                        <a href='/CS3380Project/User/userList.php'>User List</a>
+                    </div>
+                </div> 
+                <div class='dropdown'>
+                    <button class='dropbtn'>Ingredients 
+                        <i class='fa fa-caret-down'></i>
+                    </button>
+                    <div class='dropdown-content'>
+                        <a href='/CS3380Project/Ingredient/createIngredientForm.php'>Add Ingredient</a>
+                        <a href='/CS3380Project/Ingredient/ingredientList.php'>Ingredient List</a>
+                    </div>
+                </div> 
+                <a href="/CS3380Project/Recipes/listRecipes.php" class='links'>Recipes</a>
+                <a href="/CS3380Project/GroceryList/groceryList.php" class='links'>Grocery List</a>
+                <a href='/CS3380Project/logout.php' class='links'>Logout</a>
+            </div>
+
+            <img id='contentBackground' src='https://mizzoumag.missouri.edu/wp-content/uploads/2013/11/quad_web.jpg'>
+
+            <div id='userListBox'>
+
+                <h1 class='boxHeader'>Recipe List</h1>
+                
+                <form action="getRecipe.php" method="get">
+            <div>
                 <h2>Search for recipes</h2>
                 <select name="type" value="<?php echo $type; ?>" >
                     <option value="snack">Snack</option>
@@ -38,18 +70,9 @@
                 
             </div>
         </form>
+
+            <table id="data">
         
-        <table>
-        <style>
-            table {
-                border-collapse: collapse;
-                }
-            th, td {
-                border: 1px solid orange;
-                padding: 10px;
-                text-align: left;
-                    }
-        </style>
         <?php
             $servername = "ec2-18-218-134-37.us-east-2.compute.amazonaws.com";
             $dbUsername = "ProjectUser";
@@ -95,8 +118,7 @@
             
         ?>
             
-        </table>
-
+            </table>         
+        </div>
     </body>
-
 </html>
