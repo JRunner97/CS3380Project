@@ -41,7 +41,13 @@
         </div>
         
         <img id="contentBackground" src="https://mizzoumag.missouri.edu/wp-content/uploads/2013/11/quad_web.jpg">
-        
+        <?php
+            if ($error) {
+                print "<div class='error-message'>
+                  <strong>Warning! </strong>$error
+                </div>";
+            }
+        ?>
         <div id="formContainer">
 
             <h1 class="boxHeader">CS3380 Project Login</h1>

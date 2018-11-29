@@ -17,6 +17,17 @@ img#contentBackground{
     
 }
 
+.error-message {
+    position: relative;
+    z-index: 100;
+    background-color: #FFAAAA;
+    color: #801515;
+    width: 100vw;
+    text-align: center;
+    height: 30px;
+    padding-top: 10px;
+}
+
 .navbar {
     overflow: hidden;
     background-color: black;
