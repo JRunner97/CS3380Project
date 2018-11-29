@@ -1,5 +1,4 @@
 <?php
-// Created by Professor Wergeles for CS2830 at the University of Missouri
 
     if(!session_start()){
         header("Location: /CS3380Project/error.php");
@@ -7,6 +6,8 @@
     }
 
 	$currentUser = empty($_SESSION['currentUser']) ? false : $_SESSION['currentUser'];
+
+    
     //Commented this portion out because it wasn't allowing the createUserForm.php to display. It was just rerouting it.
 	/*if (!$currentUser) {
 		header("Location: /CS3380Project/login.php");
@@ -54,6 +55,16 @@
         </div>
         
         <img id="contentBackground" src="https://mizzoumag.missouri.edu/wp-content/uploads/2013/11/quad_web.jpg">
+        
+        <?php
+        
+        //$currentUser = empty($_SESSION['currentUser']) ? false : $_SESSION['currentUser'];
+            if (!empty($_SESSION['error'])) {
+                print "<div class='error-message'>
+                  <strong>Warning! </strong>'$_SESSION[error]'
+                </div>";
+            }
+        ?>
         
         <div id="createUserBox">
         

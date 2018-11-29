@@ -1,4 +1,8 @@
 <?php
+    if(!session_start()){
+        header("Location: /CS3380Project/error.php");
+        exit;
+    }
     // cleans post data of unwanted char
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $username = htmlspecialchars($_POST['username']);
@@ -43,9 +47,12 @@
         }
         else {
             
+            // $currentUser = empty($_SESSION['currentUser']) ? false : $_SESSION['currentUser'];
+            
             // TODO add flash messages
             // redirects user back to createUser.html page if username already taken
-            header("Location: /CS3380Project/User/createUser.html");
+            $_SESSION['error'] = "Username already taken";
+            header("Location: /CS3380Project/User/createUserForm.php");
             
             // makes it so that the rest of the code isn't executed
             exit();
