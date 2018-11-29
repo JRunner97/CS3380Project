@@ -55,15 +55,7 @@
         
                     <div id='userListBox'>
         
-                        <h1 class='boxHeader'>Ingredient List</h1>
-                        <button onclick='PostRequestFromIngredientList()' value='submit'>Edit</button>
-                        <button onclick='DeleteIngredientFromList()' value='submit'>Delete</button>
-                            <table id='data'>
-
-                                <tr>
-                                    <th>Ingredient</th>
-                                    <th>Quantity</th>
-                                </tr>
+                        
     <?php
         $servername = "ec2-18-218-134-37.us-east-2.compute.amazonaws.com";
         $dbUsername = "ProjectUser";
@@ -74,13 +66,24 @@
 
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-            $stmt = $conn->prepare("SELECT ingredientName, quantity FROM ingredients WHERE userID = '$_SESSION[currentUser]'");
+            $stmt = $conn->prepare("SELECT I.ingredientName, I.quantity, U.username FROM ingredients I, users U WHERE I.userID = U.userID AND U.userID = '$_SESSION[currentUser]'");
             $stmt->execute();
 
 
             if($stmt->rowCount() > 0){
-
+                
                     $row = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                
+                    echo "<h1 class='boxHeader'>" . $row[0]['username'] . "'s Ingredient List</h1>
+                        <button onclick='PostRequestFromIngredientList()' value='submit'>Edit</button>
+                        <button onclick='DeleteIngredientFromList()' value='submit'>Delete</button>
+                            <table id='data'>
+
+                                <tr>
+                                    <th>Ingredient</th>
+                                    <th>Quantity</th>
+                                </tr>";
+
     //                $queriedUsername = $row['username'];
     //                $queriedPassword = $row['password'];
     //                print_r($row);
