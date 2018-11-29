@@ -5,6 +5,7 @@
     session_start();
     
     unset($_SESSION['currentUser']);
+    unset($_SESSION['error']);
 	
 	header("Location: /CS3380Project/login.php");
 	exit;

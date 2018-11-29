@@ -1,5 +1,4 @@
 <?php
-// Created by Professor Wergeles for CS2830 at the University of Missouri
 
     if(!session_start()){
         header("Location: /CS3380Project/error.php");
@@ -75,6 +74,7 @@
                     $row = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 
                     echo "<h1 class='boxHeader'>" . $row[0]['username'] . "'s Ingredient List</h1>
+           
                         <button onclick='PostRequestFromIngredientList()' value='submit'>Edit</button>
                         <button onclick='DeleteIngredientFromList()' value='submit'>Delete</button>
                             <table id='data'>
@@ -84,15 +84,23 @@
                                     <th>Quantity</th>
                                 </tr>";
 
-    //                $queriedUsername = $row['username'];
-    //                $queriedPassword = $row['password'];
-    //                print_r($row);
-    //                print_r($row[0]['username']);
                     foreach($row as $userRow){
                         echo "  <tr>
                                     <td class='ingredientName'>" . $userRow["ingredientName"] . "</td>
                                     <td class='quantity'>" . $userRow["quantity"] . "</td>
                                 </tr>";
+                    }
+                    echo "</table>";
+                   
+                    $stmt = $conn->prepare("SELECT COUNT(*) as num FROM ingredients I, users U WHERE I.userID = U.userID AND U.userID = '$_SESSION[currentUser]'");
+  
+                    $stmt->execute();
+
+                    if($stmt->rowCount() > 0){
+
+                        $row = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+                        echo "Total Ingredients: " . $row[0]['num'];
                     }
             }
 
@@ -103,7 +111,6 @@
             }
 
     ?>      
-            </table>
         </div>
     </body>
 </html>
