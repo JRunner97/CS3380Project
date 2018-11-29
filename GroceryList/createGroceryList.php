@@ -1,10 +1,10 @@
 <?php
     // Start the session
 
-    if(!session_start()){
-        header("Location: /CS3380Project/error.php");
-        exit;
-    }
+//    if(!session_start()){
+//        header("Location: /CS3380Project/error.php");
+//        exit;
+//    }
 
 	$currentUser = empty($_SESSION['currentUser']) ? false : $_SESSION['currentUser'];
 	if (!$currentUser) {
@@ -74,7 +74,41 @@
         
         $myJSON = json_encode($requiredIngredients);
         
-        echo $myJSON;
+        
+        
+        
+        $conn = new PDO("mysql:host=$servername;dbname=CS3380", $dbUsername, $dbPassword);
+
+        $stmt = $conn->prepare("SELECT userID FROM groceryList WHERE userID = '$_SESSION[currentUser]'");
+        $stmt->execute();
+
+        // checks if a query returned a tuple from db
+        // if it did then a grocery list already exists for this person
+        if($stmt->rowCount() == 0){
+           
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        
+            $sql = "INSERT INTO groceryList (userID, ingredients)
+            VALUES ('$_SESSION[currentUser]', '$myJSON')";
+
+            // note use of exec() instead of execute()
+            $conn->exec($sql);
+
+            // TODO add flash messages
+            // redirects user back to userList.php page if successful
+            header("Location: /CS3380Project/GroceryList/groceryList.php");
+
+        }
+        else {
+            $sql = "UPDATE groceryList SET ingredients = '$myJSON' WHERE userID='$_SESSION[currentUser]'";
+
+            // Prepare statement
+            $stmt = $conn->prepare($sql);
+
+            // execute the query
+            $stmt->execute();
+
+        }
 
         }
     catch(PDOException $e)

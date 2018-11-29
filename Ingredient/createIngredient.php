@@ -36,6 +36,7 @@
             
             // TODO add flash messages
             // redirects user back to ingredient list page if successful
+//            require '../GroceryList/createGroceryList.php';
             header("Location: /CS3380Project/Ingredient/ingredientList.php");
             
             // makes it so that the rest of the code isn't executed

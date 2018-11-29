@@ -10,6 +10,8 @@
 		header("Location: /CS3380Project/login.php");
 		exit;
 	}
+
+    require 'createGroceryList.php';
 ?>
 <!DOCTYPE  html>
 <html lang="en">
@@ -57,31 +59,45 @@
         
             <h1 class="boxHeader">Grocery List</h1>
             <!-- Uses the script below to get the JSON ingredients data, then decode and use innerHTML to print -->
-            <ul id="groceryListItems"></ul>
+            <ul id="groceryListItems">
+            
+                <?php
+           
+                    $servername = "ec2-18-218-134-37.us-east-2.compute.amazonaws.com";
+                    $dbUsername = "ProjectUser";
+                    $dbPassword = "12345";
+
+                    try {
+                        $conn = new PDO("mysql:host=$servername;dbname=CS3380", $dbUsername, $dbPassword);
+
+                        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+                        $stmt = $conn->prepare("SELECT ingredients FROM groceryList WHERE userID = '$_SESSION[currentUser]'");
+                        $stmt->execute();
+                     
+
+
+                        if($stmt->rowCount() > 0){
+                  
+                            $row = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                            $obj = json_decode($row[0]['ingredients']);
+                            foreach( $obj as $ingredient){
+                                echo "<li>" .$ingredient ."</li>";
+                            }
+                           
+                        }
+
+                        }
+                    catch(PDOException $e)
+                        {
+
+                        }
+
+                ?>   
+            
+            </ul>
             
         </div>
-    
-        <!-- JavaScript to request the user's grocery list -->
-        <script>
-            
-            $(function(){
-                $.get("getGroceryList.php", function(data, status){
-
-                    var ingredients = JSON.parse(data);     
-
-                    for (var key in ingredients) {
-                        
-                        // skip loop if the property is from prototype
-                        if (!ingredients.hasOwnProperty(key)) continue;
-                        
-                        // adds missing ingredients to unordered list
-                        var obj = ingredients[key];
-                        $("#groceryListItems").append("<li>" + obj + "</li>");
-                    }
-                });
-            });
-
-        </script>
         
     </body>
 </html>
