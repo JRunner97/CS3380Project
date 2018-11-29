@@ -7,10 +7,11 @@
     }
 
 	$currentUser = empty($_SESSION['currentUser']) ? false : $_SESSION['currentUser'];
-	if (!$currentUser) {
+    //Commented this portion out because it wasn't allowing the createUserForm.php to display. It was just rerouting it.
+	/*if (!$currentUser) {
 		header("Location: /CS3380Project/login.php");
 		exit;
-	}
+	}*/
 ?>
 <!DOCTYPE  html>
 <html lang="en">
