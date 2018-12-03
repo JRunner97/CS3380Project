@@ -1,4 +1,6 @@
 <?php
+    // Start the session
+    session_start();
 
     // define variables and set to empty values
 //    $name = $email = $gender = $comment = $website = "";
@@ -19,14 +21,11 @@
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         // checks if ingredient already exists for this user
-        $stmt = $conn->prepare("SELECT ingredientName FROM ingredients WHERE ingredientName = '$ingredientName' AND ingredientID <> '$id'");
+        $stmt = $conn->prepare("SELECT ingredientName FROM ingredients WHERE ingredientName = '$ingredientName' AND userID = '$_SESSION[currentUser]'");
         $stmt->execute();
 
         // checks if a query returned a tuple from db
-        // if it did then the username is taken
-        if($stmt->rowCount() == 0){
-           
-            $createdTimestamp = date('Y-m-d G:i:s');
+        if($stmt->rowCount() != 0){
 
             $sql = "UPDATE ingredients SET ingredientName='$ingredientName', quantity='$quantity' WHERE ingredientID='$id'";
 
