@@ -18,6 +18,8 @@
         $stmt = $conn->prepare("SELECT ingredientID FROM ingredients WHERE ingredientName = '$ingredient_name' AND userID = '$_SESSION[currentUser]'");
         $stmt->execute();
 
+        
+        
 
         // checks if a query returned a tuple from db
         // if it did then the ingredient is already entered into the db

@@ -23,6 +23,9 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.8.1/parsley.min.js"></script> 
     </head>
 
+    
+    
+    
     <body id="createIngredientBody">
         <div class="navbar">
             <a>
