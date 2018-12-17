@@ -11,6 +11,12 @@
         $quantity  = htmlspecialchars($_POST['quantity']);
     }
 
+
+
+
+
+
+
     $servername = "ec2-18-218-134-37.us-east-2.compute.amazonaws.com";
     $dbUsername = "ProjectUser";
     $dbPassword = "12345";
